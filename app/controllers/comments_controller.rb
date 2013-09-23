@@ -1,9 +1,9 @@
 class CommentsController < ApplicationController
   def create
    @post = Post.find(params[:post_id])
-   @comment = Comment.new(comment_params)
-   @comment.post = @post
-   @comment.user_id = 1 #something that needs to be fixed/properly associated
+   @comment = @post.comments.build(comment_params)
+   
+   @comment.user_id = current_user
    
    if @comment.save
     flash[:notice]= "Your comment was saved!"
