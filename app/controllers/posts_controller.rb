@@ -3,13 +3,11 @@ class PostsController < ApplicationController
   before_action :require_user, only: [:new, :create, :edit, :update, :vote]
 
   def index
-  	@posts = Post.all 
-
+    @posts = Post.all
   end
 
   def show
     @comment = Comment.new
-
   end
 
   def new
@@ -19,8 +17,8 @@ class PostsController < ApplicationController
   def vote
     Vote.create(voteable: @post, user: current_user, vote: params[:vote])
     flash[:notice] = "Your vote was counted"
-    redirect_to root_path 
 
+    redirect_to root_path
   end
 
   def create
@@ -35,19 +33,16 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit 
-
+  def edit
   end
 
   def update
-
     if @post.update(post_params)
       flash[:notice]="This post was updated."
       redirect_to post_path(@post)
     else
       render :edit
     end
-
   end
 
   private
@@ -57,7 +52,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-  	params.require(:post).permit!
+    params.require(:post).permit!
   end
 
 end

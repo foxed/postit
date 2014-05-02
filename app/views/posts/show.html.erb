@@ -7,14 +7,12 @@
 
 <%= form_for [@post, @comment] do |f| %>
   <%= f.label :body, "Leave a comment" %>
-  <%= f.text_area :body, rows: 5 %>
-  <br/>
+  <%= f.text_area :body, rows: 5 %> <br/>
   <%= f.submit "Create Comment", class: 'btn btn-primary'%>
-  <% end %>
+<% end %>
 
 <ul>
- <% @post.comments.each do |comment| %>
- <li> <%= comment.body %> posted by <%= comment.user.name %></li>
- <% end %>
- 
+  <% @post.comments.each do |comment| %>
+    <li> <%= comment.body %> posted by <%= comment.user %></li>
+  <% end %>
 </ul>

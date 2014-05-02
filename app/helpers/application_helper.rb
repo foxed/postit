@@ -4,6 +4,6 @@ module ApplicationHelper
   end
 
   def pretty_date(dt)
-  	dt.strftime("%m/%d/%Y 1:%M%P %Z") # format is : 09/22/2013 6:45pm
+    dt.strftime("%m/%d/%Y 1:%M%P %Z")
   end
 end

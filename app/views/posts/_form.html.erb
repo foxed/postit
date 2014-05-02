@@ -1,16 +1,13 @@
 <%= render 'shared/errors', obj: @post %>
 
- <%= form_for @post do |f| %>
+<%= form_for @post do |f| %>
   <%= f.label :title %>
-  <%= f.text_field :title %>
-  <br/>
+  <%= f.text_field :title %><br/>
   <%= f.label :url %>
-  <%= f.text_field :url %>
-  <br/>
+  <%= f.text_field :url %> <br/>
   <%= f.label "Categories" %>
   <%=f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
-   <% cb.label(class: "checkbox inline") {cb.check_box(class: "checkbox") + cb.test} %>
-  <% end %>
-  <br />
+    <% cb.label(class: "checkbox inline") {cb.check_box(class: "checkbox") } %>
+  <% end %> <br />
   <%= f.submit(@post.new_record? ? "Create Post" : "Update Post") %>
- <% end %>
+<% end %>
